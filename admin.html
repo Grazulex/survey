@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin Panel - Survey Management">
+    <meta name="theme-color" content="#008755">
+    <title>Admin Panel - BNP Paribas Fortis</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/bnp-paribas-fortis-logo.png">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <style>
+        .admin-card {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .admin-card-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 2px solid var(--color-primary);
+        }
+
+        .admin-icon {
+            font-size: 2rem;
+        }
+
+        .admin-card-title {
+            margin: 0;
+        }
+
+        .admin-actions {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .danger-zone {
+            border-color: var(--color-error);
+        }
+
+        .danger-zone .admin-card-header {
+            border-bottom-color: var(--color-error);
+        }
+
+        .btn-danger {
+            background-color: var(--color-error);
+            color: var(--text-inverse);
+        }
+
+        .btn-danger:hover:not(:disabled) {
+            background-color: #DC2626;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .info-grid {
+            display: grid;
+            gap: var(--spacing-md);
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-md);
+            background-color: var(--bg-secondary);
+            border-radius: var(--radius-md);
+        }
+
+        .info-label {
+            font-weight: var(--font-weight-semibold);
+            color: var(--text-secondary);
+        }
+
+        .info-value {
+            font-weight: var(--font-weight-bold);
+            color: var(--text-primary);
+        }
+
+        .warning-message {
+            background-color: #FEF3C7;
+            border: 1px solid var(--color-warning);
+            border-left: 4px solid var(--color-warning);
+            color: #92400E;
+            padding: var(--spacing-md) var(--spacing-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+        }
+
+        .warning-message::before {
+            content: '⚠';
+            font-size: var(--font-size-xl);
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 768px) {
+            .admin-actions {
+                flex-direction: row;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <img src="assets/images/bnp-paribas-fortis-logo.png"
+                         alt="BNP Paribas Fortis"
+                         class="logo">
+                    <div class="header-text">
+                        <h1 class="header-title">Admin Panel</h1>
+                        <p class="header-subtitle">Survey Management</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <!-- Survey Information -->
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <span class="admin-icon">📊</span>
+                        <h2 class="admin-card-title">Survey Information</h2>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Total Responses:</span>
+                            <span class="info-value" id="adminTotalResponses">0</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Storage Size:</span>
+                            <span class="info-value" id="storageSize">0 KB</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Last Response:</span>
+                            <span class="info-value" id="lastResponseTime">Never</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Survey Version:</span>
+                            <span class="info-value" id="surveyVersion">1.0.0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Management -->
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <span class="admin-icon">💾</span>
+                        <h2 class="admin-card-title">Data Management</h2>
+                    </div>
+                    <p class="text-secondary mb-lg">Export survey data or view detailed results.</p>
+                    <div class="admin-actions">
+                        <button id="exportJsonButton" class="btn btn-primary">
+                            Export as JSON
+                        </button>
+                        <button id="exportCsvButton" class="btn btn-secondary">
+                            Export as CSV
+                        </button>
+                        <a href="results.html" class="btn btn-secondary">
+                            View Results
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Danger Zone -->
+                <div class="admin-card danger-zone">
+                    <div class="admin-card-header">
+                        <span class="admin-icon">⚠️</span>
+                        <h2 class="admin-card-title">Danger Zone</h2>
+                    </div>
+                    <div class="warning-message">
+                        <div>
+                            <strong>Warning!</strong> This action cannot be undone. All survey responses will be permanently deleted from your browser's local storage.
+                        </div>
+                    </div>
+                    <div class="admin-actions">
+                        <button id="resetButton" class="btn btn-danger">
+                            Delete All Data
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <span class="admin-icon">🔗</span>
+                        <h2 class="admin-card-title">Quick Links</h2>
+                    </div>
+                    <div class="admin-actions">
+                        <a href="index.html" class="btn btn-primary">
+                            Take Survey
+                        </a>
+                        <a href="results.html" class="btn btn-secondary">
+                            View Results
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p>&copy; 2025 BNP Paribas Fortis. All rights reserved.</p>
+                    <p class="footer-links">
+                        <a href="index.html">Take Survey</a> |
+                        <a href="results.html">View Results</a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/storage.js"></script>
+    <script>
+        // Admin panel functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Admin panel loaded');
+            loadAdminData();
+            setupAdminHandlers();
+        });
+
+        function loadAdminData() {
+            const stats = SurveyStorage.getStats();
+            const responses = SurveyStorage.getAllResponses();
+
+            // Update display
+            document.getElementById('adminTotalResponses').textContent = stats.totalResponses || 0;
+            document.getElementById('storageSize').textContent = SurveyStorage.getStorageSize() + ' KB';
+            document.getElementById('surveyVersion').textContent = SURVEY_CONFIG.storage.version;
+
+            if (stats.lastUpdated) {
+                const date = new Date(stats.lastUpdated);
+                document.getElementById('lastResponseTime').textContent = date.toLocaleString();
+            } else {
+                document.getElementById('lastResponseTime').textContent = 'Never';
+            }
+        }
+
+        function setupAdminHandlers() {
+            // Export JSON
+            document.getElementById('exportJsonButton').addEventListener('click', () => {
+                SurveyStorage.exportAsJSON();
+            });
+
+            // Export CSV
+            document.getElementById('exportCsvButton').addEventListener('click', () => {
+                SurveyStorage.exportAsCSV();
+            });
+
+            // Reset data
+            document.getElementById('resetButton').addEventListener('click', () => {
+                if (confirm('Are you sure you want to delete all survey data? This action cannot be undone.')) {
+                    if (confirm('This will permanently delete all responses. Click OK to confirm.')) {
+                        SurveyStorage.clearAllData();
+                        alert('All data has been deleted successfully.');
+                        loadAdminData();
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

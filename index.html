@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BNP Paribas Fortis - Kata in Recruitment Survey">
+    <meta name="theme-color" content="#008755">
+    <title>Kata in Recruitment Survey - BNP Paribas Fortis</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/survey.css">
+
+    <!-- Favicon (utilise le logo BNP) -->
+    <link rel="icon" type="image/png" href="assets/images/bnp-paribas-fortis-logo.png">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="assets/images/bnp-paribas-fortis-logo.png">
+
+    <!-- Additional Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+</head>
+<body>
+    <div class="page-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <img src="assets/images/bnp-paribas-fortis-logo.png"
+                         alt="BNP Paribas Fortis"
+                         class="logo">
+                    <div class="header-text">
+                        <h1 class="header-title" id="surveyTitle">Kata in Recruitment Survey</h1>
+                        <p class="header-subtitle" id="surveySubtitle">BNP Paribas Fortis</p>
+                    </div>
+                </div>
+                <p class="header-description" id="surveyDescription">
+                    Help us understand your perspective on using Kata in recruitment. Your input will shape our hiring practices. Takes only 2 minutes.
+                </p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <!-- Formulaire de sondage -->
+                <form id="surveyForm" class="survey-form" novalidate>
+                    <!-- Les questions seront injectées ici par JavaScript -->
+                    <div id="questionsContainer"></div>
+
+                    <!-- Progress bar -->
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <p class="progress-text" id="progressText">0% complété</p>
+                    </div>
+
+                    <!-- Messages d'erreur -->
+                    <div id="errorContainer" class="error-message hidden" role="alert"></div>
+
+                    <!-- Action buttons -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-block" id="submitButton">
+                            Submit Survey
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Success message (hidden by default) -->
+                <div id="successMessage" class="success-card hidden">
+                    <div class="success-icon">✓</div>
+                    <h2 class="success-title" id="successTitle">Thank you for your participation!</h2>
+                    <p class="success-description" id="successDescription">
+                        Your responses have been successfully saved.
+                    </p>
+                    <div class="success-actions">
+                        <a href="results.html" class="btn btn-primary">
+                            View Results
+                        </a>
+                        <button onclick="location.reload()" class="btn btn-secondary">
+                            Take Survey Again
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p>&copy; 2025 BNP Paribas Fortis. All rights reserved.</p>
+                    <p class="footer-links">
+                        <a href="results.html">View Results</a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/session-control.js"></script>
+    <script src="js/survey.js"></script>
+</body>
+</html>

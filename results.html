@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Survey Results - Kata in Recruitment">
+    <meta name="theme-color" content="#008755">
+    <title>Survey Results - BNP Paribas Fortis</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/results.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/bnp-paribas-fortis-logo.png">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="assets/images/bnp-paribas-fortis-logo.png">
+</head>
+<body>
+    <div class="page-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <img src="assets/images/bnp-paribas-fortis-logo.png"
+                         alt="BNP Paribas Fortis"
+                         class="logo">
+                    <div class="header-text">
+                        <h1 class="header-title">Survey Results</h1>
+                        <p class="header-subtitle">Kata in Recruitment</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <!-- Statistics Overview -->
+                <div class="stats-overview">
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="totalResponses">0</div>
+                            <div class="stat-label">Total Responses</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="lastUpdate">-</div>
+                            <div class="stat-label">Last Updated</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="completionRate">100%</div>
+                            <div class="stat-label">Completion Rate</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No Data Message -->
+                <div id="noDataMessage" class="no-data-card">
+                    <div class="no-data-icon">📭</div>
+                    <h2>No Survey Data Yet</h2>
+                    <p>There are no survey responses to display at the moment.</p>
+                    <a href="index.html" class="btn btn-primary">Take the Survey</a>
+                </div>
+
+                <!-- Results Container -->
+                <div id="resultsContainer" class="results-container hidden">
+                    <!-- Les graphiques seront injectés ici par JavaScript -->
+                </div>
+
+                <!-- Actions -->
+                <div class="results-actions">
+                    <a href="index.html" class="btn btn-primary">Take Survey</a>
+                    <button onclick="window.print()" class="btn btn-secondary no-print">Print Results</button>
+                    <button id="exportButton" class="btn btn-secondary no-print">Export Data</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p>&copy; 2025 BNP Paribas Fortis. All rights reserved.</p>
+                    <p class="footer-links">
+                        <a href="index.html">Take Survey</a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/results.js"></script>
+</body>
+</html>
