@@ -3,16 +3,20 @@
  * Displays survey results with charts and statistics
  */
 
-// Chart color palette (BNP colors)
+// Chart color palette (diverse, high contrast colors)
 const CHART_COLORS = [
-  '#008755', // Primary green
-  '#007348', // Dark green
-  '#39A87B', // Medium sea green
-  '#6ABB97', // Green sheen
-  '#8BC8AA', // Eton blue
-  '#10B981', // Success green
-  '#3B82F6', // Info blue
-  '#F59E0B', // Warning
+  '#008755', // BNP Green (primary)
+  '#3B82F6', // Blue
+  '#F59E0B', // Orange
+  '#8B5CF6', // Purple
+  '#EC4899', // Pink
+  '#10B981', // Emerald
+  '#F97316', // Dark Orange
+  '#06B6D4', // Cyan
+  '#EF4444', // Red
+  '#84CC16', // Lime
+  '#6366F1', // Indigo
+  '#14B8A6', // Teal
 ];
 
 let chartInstances = [];
